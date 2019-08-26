@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -50,10 +52,17 @@ public class UsuariosController {
 	}
 	
 	private List<Usuario> obterTodosUsuarios() {
-		return Arrays.asList(
-				new Usuario("Rodrigo", 39),
-				new Usuario("Rodrigo", 30),
-				new Usuario("Michelle", 18)
-				);
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		usuarios.add(new Usuario("Rodrigo", 39));
+		usuarios.add(new Usuario("Rodrigo", 30));
+		usuarios.add(new Usuario("Michelle", 18));
+		
+		return usuarios;
 	}
-}
+	
+	@PostMapping("/usuarios")
+	public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody Usuario usuario) {
+		this.usuarios.add(usuario);
+		return ResponseEntity.ok(usuario);
+	}
+}	
