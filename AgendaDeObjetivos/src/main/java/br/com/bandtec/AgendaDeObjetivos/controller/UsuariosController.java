@@ -20,7 +20,7 @@ public class UsuariosController {
 	private List<Usuario> usuarios;
 	
 	public UsuariosController() {
-		this.usuarios = obterTodosUsuarios();
+//		this.usuarios = obterTodosUsuarios();
 	}
 	
 	@GetMapping("/usuarios/nome/{nomeDoUsuario}")
@@ -28,9 +28,9 @@ public class UsuariosController {
 			@PathVariable("nomeDoUsuario") String nome) {
 		List<Usuario> usuariosPorNome = new ArrayList<>();
 		for(Usuario u : usuarios) {
-			if(u.getNome().equals(nome)) {
-				usuariosPorNome.add(u); 
-			}
+//			if(u.getNome().equals(nome)) {
+//				usuariosPorNome.add(u); 
+//			}
 		}
 		if(usuariosPorNome.isEmpty()) {
 			return ResponseEntity.noContent().build();
@@ -43,9 +43,9 @@ public class UsuariosController {
 			@PathVariable("idadeDoUsuario") Integer idade) {
 		List<Usuario> usuariosPorIdade = new ArrayList<>();
 		for(Usuario u : usuarios) {
-			if(u.getIdade() == idade) {
-				usuariosPorIdade.add(u);
-			}
+//			if(u.getIdade() == idade) {
+//				usuariosPorIdade.add(u);
+//			}
 		}
 		if(usuariosPorIdade.isEmpty()) {
 			return ResponseEntity.noContent().build();
@@ -53,14 +53,14 @@ public class UsuariosController {
 		return ResponseEntity.ok(usuariosPorIdade);
 	}
 	
-	private List<Usuario> obterTodosUsuarios() {
-		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-		usuarios.add(new Usuario("Rodrigo", 39));
-		usuarios.add(new Usuario("Rodrigo", 30));
-		usuarios.add(new Usuario("Michelle", 18));
-		
-		return usuarios;
-	}
+//	private List<Usuario> obterTodosUsuarios() {
+//		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+//		usuarios.add(new Usuario("Rodrigo", 39));
+//		usuarios.add(new Usuario("Rodrigo", 30));
+//		usuarios.add(new Usuario("Michelle", 18));
+//		
+//		return usuarios;
+//	}
 	
 	@PostMapping("/usuarios")
 	public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody Usuario usuario) {
