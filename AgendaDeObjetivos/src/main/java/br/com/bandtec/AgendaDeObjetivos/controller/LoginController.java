@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.bandtec.AgendaDeObjetivos.model.Credenciais;
+//import br.com.bandtec.AgendaDeObjetivos.model.Credenciais;
 import br.com.bandtec.AgendaDeObjetivos.model.TodosUsuarios;
 import br.com.bandtec.AgendaDeObjetivos.model.Usuario;
 
@@ -21,23 +21,27 @@ public class LoginController{
 		this.usuarios = todosUsuarios;
 	}
 	
-	@PostMapping("/login")
-	public ResponseEntity<String> validarLogin(@RequestBody Credenciais credencias) {
-		if(credencias.getSenha().equals(credencias.getLogin())) {
-			return ResponseEntity.ok("Login efetuado com sucesso");			
-		} else {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("erro");
-		}
-	}
+//	@PostMapping("/login")
+//	public ResponseEntity<String> validarLogin(@RequestBody Credenciais credencias) {
+//		if(credencias.getSenha().equals(credencias.getLogin())) {
+//			return ResponseEntity.ok("Login efetuado com sucesso");			
+//		} else {
+//			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("erro");
+//		}
+//	}
 	
-	@PostMapping("/login/login")
-	public ResponseEntity<Usuario> validacaoLogin(@RequestBody Usuario usuario) {
-		Usuario sucesso = usuarios.existe(usuario.getLogin(), usuario.getSenha());
-		return ResponseEntity.ok(sucesso);
+	@PostMapping("/login")
+	public ResponseEntity<String> validacaoLogin(@RequestBody Usuario usuario) {
+		Usuario usuarioAutenticado = usuarios.existe(usuario.getLogin(), usuario.getSenha());
+		if(usuarioAutenticado == null) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não autenticado");
+		}
+		return ResponseEntity.ok("Usuário autenticado");
 	}
 	
 	@PostMapping("cadastrar")
-	public void cadastrar(@RequestBody Usuario usuario) {
+	public ResponseEntity<String> cadastrar(@RequestBody Usuario usuario) {
 		usuarios.save(usuario);
+		return ResponseEntity.ok("Cadastro realizado com sucesso");
 	}
 }
