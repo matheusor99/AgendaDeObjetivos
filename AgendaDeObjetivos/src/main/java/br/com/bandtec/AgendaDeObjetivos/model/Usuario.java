@@ -1,6 +1,7 @@
 package br.com.bandtec.AgendaDeObjetivos.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,36 +15,33 @@ public class Usuario {
 	@GeneratedValue
 	private Long id;
 	
-	@Column(name="login")
-	private String login;
+	@Embedded
+	private Credenciais credenciais;
 	
-	@Column(name="senha")
-	private String senha;
+	private String nome;
 	
-//	private String nome;
-//	
-//	private Integer idade;
+	private Integer idade;
 
-//	public String getNome() {
-//		return nome;
-//	}
-//	public Usuario(String login, String senha) {
-//		super();
-//		this.login = login;
-//		this.senha = senha;
-//	}
-//
-//	public void setNome(String nome) {
-//		this.nome = nome;
-//	}
-//
-//	public Integer getIdade() {
-//		return idade;
-//	}
+	public String getNome() {
+		return nome;
+	}
+	public Usuario(String nome, Integer idade) {
+		super();
+		this.nome = nome;
+		this.idade = idade;
+	}
 
-//	public void setIdade(Integer idade) {
-//		this.idade = idade;
-//	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
 
 	public Long getId() {
 		return id;
@@ -53,21 +51,7 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getLogin() {
-		return login;
-	}
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 
 	
 }

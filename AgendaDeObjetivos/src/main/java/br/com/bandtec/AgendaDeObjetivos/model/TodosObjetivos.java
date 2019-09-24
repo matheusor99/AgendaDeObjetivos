@@ -1,7 +1,5 @@
 package br.com.bandtec.AgendaDeObjetivos.model;
 
-import static java.util.stream.Collectors.toList;
-
 import java.time.LocalDate;
 import java.util.List;
 

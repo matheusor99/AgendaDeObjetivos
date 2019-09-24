@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.bandtec.AgendaDeObjetivos.model.Credenciais;
 //import br.com.bandtec.AgendaDeObjetivos.model.Credenciais;
 import br.com.bandtec.AgendaDeObjetivos.model.TodosUsuarios;
 import br.com.bandtec.AgendaDeObjetivos.model.Usuario;
@@ -31,8 +32,8 @@ public class LoginController{
 //	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> validacaoLogin(@RequestBody Usuario usuario) {
-		Usuario usuarioAutenticado = usuarios.existe(usuario.getLogin(), usuario.getSenha());
+	public ResponseEntity<String> validacaoLogin(@RequestBody Credenciais credenciais) {
+		Usuario usuarioAutenticado = usuarios.existe(credenciais);
 		if(usuarioAutenticado == null) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não autenticado");
 		}
