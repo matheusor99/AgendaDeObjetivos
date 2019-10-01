@@ -7,6 +7,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -34,6 +36,10 @@ public class Objetivo {
 	@Embedded
 	private Prioridade prioridade;
 	
+	@ManyToOne
+	@JoinColumn(name="usuario_id")
+	private Usuario usuario;
+	
 	public Objetivo() {}
 	
 	public Objetivo(String titulo, String descricao, LocalDate dataMaximaParaExecucao, Prioridade prioridade) {
@@ -58,33 +64,33 @@ public class Objetivo {
 		return titulo;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+//	public void setTitulo(String titulo) {
+//		this.titulo = titulo;
+//	}
 
 	public String getDescricao() {
 		return descricao;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+//	public void setDescricao(String descricao) {
+//		this.descricao = descricao;
+//	}
 
 	public LocalDate getDataMaximaParaExecucao() {
 		return dataMaximaParaExecucao;
 	}
 
-	public void setDataMaximaParaExecucao(LocalDate dataMaximaParaExecucao) {
-		this.dataMaximaParaExecucao = dataMaximaParaExecucao;
-	}
+//	public void setDataMaximaParaExecucao(LocalDate dataMaximaParaExecucao) {
+//		this.dataMaximaParaExecucao = dataMaximaParaExecucao;
+//	}
 
 	public Prioridade getPrioridade() {
 		return prioridade;
 	}
 
-	public void setPrioridade(Prioridade prioridade) {
-		this.prioridade = prioridade;
-	}
+//	public void setPrioridade(Prioridade prioridade) {
+//		this.prioridade = prioridade;
+//	}
 	
 	
 

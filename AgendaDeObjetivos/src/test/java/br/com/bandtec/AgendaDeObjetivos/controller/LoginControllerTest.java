@@ -30,14 +30,16 @@ public class LoginControllerTest {
 		ResponseEntity<String> resposta = controller.validacaoLogin(credenciais);
 
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
-		assertEquals("Login efetuado com sucesso", resposta.getBody());
+		assertEquals("Usuário autenticado", resposta.getBody());
 	}
 
 	@Test
 	public void LoginComFalha() {
-		ResponseEntity<String> resposta = controller.validacaoLogin(new Credenciais("login", "senha"));
+		Credenciais c = new Credenciais("login", "senha");
+		Mockito.when(todosUsuarios.existe(c)).thenReturn(null);
+		ResponseEntity<String> resposta = controller.validacaoLogin(c);
 		
 		assertEquals(HttpStatus.UNAUTHORIZED, resposta.getStatusCode());
-		assertEquals("erro", resposta.getBody());		
+		assertEquals("Usuário não autenticado", resposta.getBody());		
 	}
 }

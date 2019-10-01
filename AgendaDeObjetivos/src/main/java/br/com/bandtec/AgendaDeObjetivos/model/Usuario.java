@@ -1,10 +1,13 @@
 package br.com.bandtec.AgendaDeObjetivos.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +20,9 @@ public class Usuario {
 	
 	@Embedded
 	private Credenciais credenciais;
+	
+	@OneToMany(mappedBy="usuario")
+	private List<Objetivo> objetivos;
 	
 	private String nome;
 	
