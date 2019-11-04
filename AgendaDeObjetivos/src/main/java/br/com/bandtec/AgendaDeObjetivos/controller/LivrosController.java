@@ -23,6 +23,12 @@ public class LivrosController {
 	
 	@GetMapping("/livros/tema/{tema}")
 	public ResponseEntity<List<Livro>> buscarPorTema(@PathVariable("tema") String tema) {
-		return null;
+		List<Livro> livros = livraria.buscarPorTema(tema);
+		
+		if(livros.isEmpty()) {
+			return ResponseEntity.noContent().build();
+		} 
+		
+		return ResponseEntity.ok(livros);
 	}
 }

@@ -29,7 +29,7 @@ public class UsuariosController {
 	@GetMapping("/usuarios/nome/{nomeDoUsuario}")
 	public ResponseEntity<List<Usuario>> obterPorNome(
 			@PathVariable("nomeDoUsuario") String nome) {
-		List<Usuario> usuarios = todosUsuarios.findByName(nome);
+		List<Usuario> usuarios = todosUsuarios.findByNome(nome);
 //		List<Usuario> usuariosPorNome = new ArrayList<>();
 //		for(Usuario u : usuarios) {
 //			if(u.getNome().equals(nome)) {
