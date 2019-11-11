@@ -64,46 +64,15 @@ public class Objetivo {
 		return titulo;
 	}
 
-//	public void setTitulo(String titulo) {
-//		this.titulo = titulo;
-//	}
-
 	public String getDescricao() {
 		return descricao;
 	}
 
-//	public void setDescricao(String descricao) {
-//		this.descricao = descricao;
-//	}
-
 	public LocalDate getDataMaximaParaExecucao() {
 		return dataMaximaParaExecucao;
 	}
-
-//	public void setDataMaximaParaExecucao(LocalDate dataMaximaParaExecucao) {
-//		this.dataMaximaParaExecucao = dataMaximaParaExecucao;
-//	}
 
 	public Prioridade getPrioridade() {
 		return prioridade;
 	}
-
-//	public void setPrioridade(Prioridade prioridade) {
-//		this.prioridade = prioridade;
-//	}
-	
-	
-
-	/*
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public LocalDate getDataMaximaParaExecucao() {
-		return dataMaximaParaExecucao;
-	}*/
 }
